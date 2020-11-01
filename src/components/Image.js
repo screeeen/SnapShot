@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-const Image = ({ url, title }) => (
+const Image = ({ url, title, showGeo, photo_id }) => (
   <li>
-    <img src={url} alt={title} />
+    <img src={url} alt={title} onMouseOver={() => showGeo(photo_id)} />
   </li>
 );
 
