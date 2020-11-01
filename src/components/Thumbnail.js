@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Thumbnail = ({ url, center }) => {
+const Thumbnail = ({ url, center, findImage }) => {
   const thumbStyle = {
-    width: '100px',
-    height: '100px',
-    border: '1px solid black',
+    width: '50px',
+    height: '50px',
+    borderRadius: '90px',
     position: 'absolute',
-    zIndex: '11',
+    transform: 'translate(-50%, -50%)',
+    zIndex: '30',
   };
 
-  // const { lat, lng } = center;
-  console.log(url, center);
-  return url && center ? <img style={thumbStyle} src={url} alt="" /> : null;
+  return url && center ? (
+    <div style={thumbStyle} onMouseOver={() => findImage(url)}>
+      <img style={thumbStyle} src={url} alt="name" />
+    </div>
+  ) : null;
 };
 
 export default Thumbnail;

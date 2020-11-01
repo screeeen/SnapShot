@@ -3,25 +3,13 @@ import GoogleMapReact from 'google-map-react';
 import { PhotoContext } from '../context/PhotoContext';
 import Thumbnail from './Thumbnail';
 
-// const AnyReactComponent = ({ text }) => <div>{text}</div>;
-
 export default function WorldMap() {
-  const { currentGeoMarker, currentUrl } = useContext(PhotoContext);
+  const { currentGeoMarker, currentUrl, findImage } = useContext(PhotoContext);
   const defaultCenter = {
     lat: -36.926658,
     lng: -73.022003,
   };
   const defaultZoom = 11;
-
-  //   const renderMarkers = (map, maps) => {
-  //     let marker = new maps.Marker({
-  //       position: currentGeoMarker,
-  //       map,
-  //       animation: window.google.maps.Animation.DROP,
-  //       title: '',
-  //     });
-  //     return marker;
-  //   };
 
   return (
     // Important! Always set the container height explicitly
@@ -32,6 +20,7 @@ export default function WorldMap() {
         position: 'sticky',
         top: '100px',
         zIndex: '10',
+        border: '2px solid #555',
         borderRadius: '90px !important',
       }}
     >
@@ -41,10 +30,12 @@ export default function WorldMap() {
         center={currentGeoMarker}
         defaultZoom={defaultZoom}
         yesIWantToUseGoogleMapApiInternals
-        // onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps)}
-        // onChange={({ map, maps }) => renderMarkers(map, maps)}
       >
-        <Thumbnail center={currentGeoMarker} url={currentUrl} />
+        <Thumbnail
+          center={currentGeoMarker}
+          url={currentUrl}
+          findImage={findImage}
+        />
       </GoogleMapReact>
     </div>
   );
