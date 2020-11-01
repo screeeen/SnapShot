@@ -6,7 +6,6 @@ import Loader from './Loader';
 
 const Container = ({ searchTerm }) => {
   const { images, loading, runSearch } = useContext(PhotoContext);
-  const { latitude, longitude } = images;
 
   useEffect(() => {
     runSearch(searchTerm);
@@ -15,7 +14,7 @@ const Container = ({ searchTerm }) => {
 
   return (
     <div className="photo-container">
-      <WorldMap center={(latitude, longitude)} />
+      <WorldMap />
       {loading ? <Loader /> : <Gallery data={images} />}
     </div>
   );

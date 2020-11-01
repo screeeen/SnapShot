@@ -13,17 +13,38 @@ export default function WorldMap() {
   };
   const defaultZoom = 11;
 
-  console.log(currentGeoMarker);
+  //   const renderMarkers = (map, maps) => {
+  //     let marker = new maps.Marker({
+  //       position: currentGeoMarker,
+  //       map,
+  //       animation: window.google.maps.Animation.DROP,
+  //       title: '',
+  //     });
+  //     return marker;
+  //   };
+
   return (
     // Important! Always set the container height explicitly
-    <div style={{ height: '25vh', width: '100%' }}>
+    <div
+      style={{
+        height: '30vh',
+        width: '100%',
+        position: 'sticky',
+        top: '100px',
+        zIndex: '10',
+        borderRadius: '90px !important',
+      }}
+    >
       <GoogleMapReact
         bootstrapURLKeys={{ key: 'AIzaSyC5T9V5cwNt8AKEoeML3R4SUJ_GkKFPCZ0' }}
         defaultCenter={defaultCenter}
         center={currentGeoMarker}
         defaultZoom={defaultZoom}
+        yesIWantToUseGoogleMapApiInternals
+        // onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps)}
+        // onChange={({ map, maps }) => renderMarkers(map, maps)}
       >
-        <Thumbnail url={currentUrl} coords={currentGeoMarker} />
+        <Thumbnail center={currentGeoMarker} url={currentUrl} />
       </GoogleMapReact>
     </div>
   );

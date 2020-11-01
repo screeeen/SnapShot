@@ -6,8 +6,8 @@ export const PhotoContext = createContext();
 const PhotoContextProvider = (props) => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [currentGeoMarker, setGeoMarker] = useState(null);
-  // const [currentUrl, setCurrentUrl] = useState(null);
+  const [currentGeoMarker, setGeoMarker] = useState(undefined);
+  const [currentUrl, setCurrentUrl] = useState(undefined);
 
   const runSearch = (query) => {
     const sessionData = sessionStorage.getItem(query);
@@ -31,7 +31,6 @@ const PhotoContextProvider = (props) => {
           query,
           JSON.stringify(response.data.photos.photo),
         );
-        console.log(response);
         setLoading(false);
       })
       .catch((error) => {
@@ -43,9 +42,8 @@ const PhotoContextProvider = (props) => {
   };
 
   const getGeo = ({ coords, url }) => {
-    console.log(coords, url);
-    setGeoMarker(coords, url);
-    console.log(' geoMarker', currentGeoMarker, url);
+    setGeoMarker(coords);
+    setCurrentUrl(url);
   };
 
   return (
@@ -56,10 +54,9 @@ const PhotoContextProvider = (props) => {
         currentGeoMarker,
         runSearch,
         getGeo,
-        setGeoMarker,
+        currentUrl,
       }}
     >
-      {console.log('props.children', props.children)}
       {props.children}
     </PhotoContext.Provider>
   );
