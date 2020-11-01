@@ -9,11 +9,6 @@ const Gallery = (props) => {
   const results = props.data;
   let images;
   let noImages;
-  console.log(props.data, images, noImages);
-
-  const showGeo = (photo_id) => {
-    getGeo(photo_id);
-  };
 
   // map variables to each item in fetched image array and return image component
   if (results.length > 0) {
@@ -23,9 +18,13 @@ const Gallery = (props) => {
       let id = image.id;
       let secret = image.secret;
       let title = image.title;
+      let coords = {
+        lat: parseFloat(image.latitude),
+        lng: parseFloat(image.longitude),
+      };
       let url = `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_m.jpg`;
       return (
-        <Image url={url} key={id} photo_id={id} alt={title} showGeo={showGeo} />
+        <Image url={url} key={id} alt={title} getGeo={getGeo} coords={coords} />
       );
     });
   } else {
