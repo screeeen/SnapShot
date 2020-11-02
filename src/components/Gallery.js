@@ -4,7 +4,7 @@ import NoImages from './NoImages';
 import Image from './Image';
 
 const Gallery = (props) => {
-  const { getGeo } = useContext(PhotoContext);
+  const { getGeo, currentId } = useContext(PhotoContext);
 
   const results = props.data;
   let images;
@@ -23,8 +23,17 @@ const Gallery = (props) => {
         lng: parseFloat(image.longitude),
       };
       let url = `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_m.jpg`;
+      console.log(id, currentId, id === currentId);
+      let selected = id === currentId;
       return (
-        <Image url={url} key={id} alt={title} getGeo={getGeo} coords={coords} />
+        <Image
+          url={url}
+          key={id}
+          alt={title}
+          getGeo={getGeo}
+          coords={coords}
+          selected={selected}
+        />
       );
     });
   } else {

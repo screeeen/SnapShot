@@ -8,6 +8,7 @@ const PhotoContextProvider = (props) => {
   const [loading, setLoading] = useState(true);
   const [currentGeoMarker, setGeoMarker] = useState(undefined);
   const [currentUrl, setCurrentUrl] = useState(undefined);
+  const [currentId, setCurrentId] = useState(undefined);
 
   const runSearch = (query) => {
     const sessionData = sessionStorage.getItem(query);
@@ -42,7 +43,10 @@ const PhotoContextProvider = (props) => {
   };
 
   const findImage = ({ url }) => {
-    console.log(url);
+    images &&
+      url &&
+      setCurrentId(images.filter((img) => url.includes(img.id))[0].id);
+    console.log(currentId);
   };
 
   const getGeo = ({ coords, url }) => {
@@ -56,6 +60,7 @@ const PhotoContextProvider = (props) => {
         images,
         loading,
         currentGeoMarker,
+        currentId,
         currentUrl,
         runSearch,
         getGeo,
