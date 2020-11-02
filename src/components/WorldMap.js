@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import dotenv from 'dotenv';
 import GoogleMapReact from 'google-map-react';
 import { PhotoContext } from '../context/PhotoContext';
 import Thumbnail from './Thumbnail';
@@ -25,7 +26,7 @@ export default function WorldMap() {
       }}
     >
       <GoogleMapReact
-        bootstrapURLKeys={{ key: '' }}
+        bootstrapURLKeys={{ key: process.env.REACT_APP_API_KEY }}
         defaultCenter={defaultCenter}
         center={currentGeoMarker}
         defaultZoom={defaultZoom}
