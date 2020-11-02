@@ -25,7 +25,7 @@ export default function WorldMap() {
       }}
     >
       <GoogleMapReact
-        bootstrapURLKeys={{ key: 'AIzaSyC5T9V5cwNt8AKEoeML3R4SUJ_GkKFPCZ0' }}
+        bootstrapURLKeys={{ key: '' }}
         defaultCenter={defaultCenter}
         center={currentGeoMarker}
         defaultZoom={defaultZoom}
