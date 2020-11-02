@@ -148,7 +148,7 @@ input {
   transform: scale(1.25);
   transition: transform 1.25s;
   background-color: black;
-  opacity: 0.2;
+  opacity: 0.7;
 }
 
 .photo-container li:hover img {

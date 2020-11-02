@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
-import dotenv from 'dotenv';
+import React, { useContext } from 'react';
 import GoogleMapReact from 'google-map-react';
 import { PhotoContext } from '../context/PhotoContext';
 import Thumbnail from './Thumbnail';

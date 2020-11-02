@@ -41,6 +41,10 @@ const PhotoContextProvider = (props) => {
       });
   };
 
+  const findImage = ({ url }) => {
+    console.log(url);
+  };
+
   const getGeo = ({ coords, url }) => {
     setGeoMarker(coords);
     setCurrentUrl(url);
@@ -52,9 +56,10 @@ const PhotoContextProvider = (props) => {
         images,
         loading,
         currentGeoMarker,
+        currentUrl,
         runSearch,
         getGeo,
-        currentUrl,
+        findImage,
       }}
     >
       {props.children}

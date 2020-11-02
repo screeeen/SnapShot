@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Thumbnail = ({ url, center, findImage }) => {
+const Thumbnail = ({ url, findImage }) => {
   const thumbStyle = {
     width: '50px',
     height: '50px',
@@ -10,11 +10,11 @@ const Thumbnail = ({ url, center, findImage }) => {
     zIndex: '30',
   };
 
-  return url && center ? (
-    <div style={thumbStyle} onMouseOver={() => findImage(url)}>
+  return (
+    <div style={thumbStyle} onMouseOver={() => findImage({ url })}>
       <img style={thumbStyle} src={url} alt="name" />
     </div>
-  ) : null;
+  );
 };
 
 export default Thumbnail;
