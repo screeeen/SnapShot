@@ -16,11 +16,12 @@ export default function WorldMap() {
   const containerStyle = {
     height: '30vh',
     width: '100%',
+  };
+
+  const sticky = {
     position: 'sticky',
-    top: '100px',
+    top: '180px',
     zIndex: '10',
-    border: '2px solid #555',
-    borderRadius: '90px !important',
   };
 
   const createMarkers = () => {
@@ -37,14 +38,16 @@ export default function WorldMap() {
   };
 
   return (
-    <LoadScript googleMapsApiKey={process.env.REACT_APP_API_KEY}>
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={currentGeoMarker || defaultCenter}
-        zoom={zoom}
-      >
-        {createMarkers()}
-      </GoogleMap>
-    </LoadScript>
+    <div style={sticky}>
+      <LoadScript googleMapsApiKey={process.env.REACT_APP_API_KEY}>
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={currentGeoMarker || defaultCenter}
+          zoom={zoom}
+        >
+          {createMarkers()}
+        </GoogleMap>
+      </LoadScript>
+    </div>
   );
 }
