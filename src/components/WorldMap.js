@@ -11,7 +11,7 @@ export default function WorldMap() {
     lat: -0.926658,
     lng: -73.022003,
   };
-  const zoom = 1;
+  const zoom = 3;
 
   const containerStyle = {
     height: '30vh',
@@ -29,7 +29,10 @@ export default function WorldMap() {
         lat: parseFloat(img.latitude),
         lng: parseFloat(img.longitude),
       };
-      return <Marker key={i} position={pos} />;
+      const id = img.id;
+      return (
+        <Marker key={i} position={pos} onMouseOver={() => findImage({ id })} />
+      );
     });
   };
 

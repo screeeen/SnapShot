@@ -42,11 +42,8 @@ const PhotoContextProvider = (props) => {
       });
   };
 
-  const findImage = ({ url }) => {
-    images &&
-      url &&
-      setCurrentId(images.filter((img) => url.includes(img.id))[0].id);
-    console.log(currentId);
+  const findImage = ({ id }) => {
+    images && id && setCurrentId(images.filter((img) => img.id == id)[0].id);
   };
 
   const getGeo = ({ coords, url }) => {
