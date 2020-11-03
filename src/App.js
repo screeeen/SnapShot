@@ -6,6 +6,7 @@ import Header from './components/Header';
 import Item from './components/Item';
 import Search from './components/Search';
 import NotFound from './components/NotFound';
+import WorldMap from './components/WorldMap';
 
 const customHistory = createBrowserHistory();
 
@@ -25,10 +26,13 @@ class App extends Component {
           <div className="container">
             <Route
               render={(props) => (
-                <Header
-                  handleSubmit={this.handleSubmit}
-                  history={customHistory}
-                />
+                <>
+                  <WorldMap />
+                  <Header
+                    handleSubmit={this.handleSubmit}
+                    history={customHistory}
+                  />
+                </>
               )}
             />
             <Switch>

@@ -42,7 +42,7 @@ body {
 
 h2 {
   font-size: 2em;
-  margin: 52px 0 40px;
+  /* margin: 52px 0 40px; */
   text-transform: capitalize;
   color: #051c33;
 }
@@ -78,7 +78,7 @@ a {
   display: flex;
   margin: 0 auto 32px;
   position: sticky;
-  top: 40px;
+  top: 30vh;
   z-index: 9;
 }
 
@@ -161,6 +161,7 @@ input {
 
 .highlighted * {
   opacity: 1 !important; /* not cool! */
+  z-index: 12 !important;
 }
 
 .photo-container li:hover img {
@@ -201,7 +202,7 @@ input {
 
 @media only screen and (max-width: 767px) {
   body {
-    padding-top: 2em;
+    /* padding-top: 2em; */
   }
 
   .photo-container li {
@@ -211,7 +212,7 @@ input {
 
 @media only screen and (min-width: 768px) {
   body {
-    padding-top: 4em;
+    /* padding-top: 4em; */
   }
 
   .container {
