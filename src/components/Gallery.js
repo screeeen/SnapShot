@@ -23,7 +23,6 @@ const Gallery = (props) => {
         lng: parseFloat(image.longitude),
       };
       let url = `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_m.jpg`;
-      console.log(id, currentId, id === currentId);
       let selected = id === currentId;
       return (
         <Image
