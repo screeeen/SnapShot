@@ -78,7 +78,7 @@ a {
   display: flex;
   margin: 0 auto 32px;
   position: sticky;
-  top: 30vh;
+  top: 32vh;
   z-index: 9;
 }
 

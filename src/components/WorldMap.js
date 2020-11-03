@@ -18,6 +18,7 @@ export default function WorldMap() {
     width: '100%',
     margin: 0,
     padding: 0,
+    boxShadow: '0px 2px 2px gray',
   };
 
   const sticky = {
