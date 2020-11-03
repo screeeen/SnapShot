@@ -42,7 +42,7 @@ body {
 
 h2 {
   font-size: 2em;
-  margin: 52px 0 40px;
+  /* margin: 52px 0 40px; */
   text-transform: capitalize;
   color: #051c33;
 }
@@ -77,6 +77,9 @@ a {
   max-width: 460px;
   display: flex;
   margin: 0 auto 32px;
+  position: sticky;
+  top: 30vh;
+  z-index: 9;
 }
 
 .search-form button {
@@ -88,11 +91,11 @@ a {
 }
 
 .inactive {
-  background-color: #d7dbdf;
+  background-color: #555;
 }
 
 .active {
-  background-color: #051c33;
+  background-color: #000;
   cursor: pointer;
 }
 
@@ -101,7 +104,7 @@ input {
   width: 100%;
   background-color: #edeff0;
   padding: 10px 15px;
-  border: 3px solid #d7dbdf;
+  border: 3px solid #555;
   border-right: none;
   border-radius: 0.35em 0 0 0.35em;
   outline: none;
@@ -144,10 +147,26 @@ input {
   width: 100%;
   transform: scale(1.25);
   transition: transform 1.25s;
+  background-color: black;
+  opacity: 0.5;
+}
+
+.highlighted {
+  box-sizing: border-box;
+  border: 5px solid black;
+  padding: 5px;
+  /* transform: scale(1.2); */
+  opacity: 1;
+}
+
+.highlighted * {
+  opacity: 1 !important; /* not cool! */
+  z-index: 12 !important;
 }
 
 .photo-container li:hover img {
   transform: scale(1.65);
+  opacity: 1;
 }
 
 .photo-container .not-found {
@@ -183,7 +202,7 @@ input {
 
 @media only screen and (max-width: 767px) {
   body {
-    padding-top: 2em;
+    /* padding-top: 2em; */
   }
 
   .photo-container li {
@@ -193,7 +212,7 @@ input {
 
 @media only screen and (min-width: 768px) {
   body {
-    padding-top: 4em;
+    /* padding-top: 4em; */
   }
 
   .container {
