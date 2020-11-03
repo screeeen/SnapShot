@@ -6,6 +6,9 @@ export const PhotoContext = createContext();
 const PhotoContextProvider = (props) => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentGeoMarker, setGeoMarker] = useState(undefined);
+  const [currentUrl, setCurrentUrl] = useState(undefined);
+  const [currentId, setCurrentId] = useState(undefined);
 
   const runSearch = (query) => {
     const sessionData = sessionStorage.getItem(query);
@@ -21,7 +24,7 @@ const PhotoContextProvider = (props) => {
   const callApi = (query) => {
     axios
       .get(
-        `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`,
+        `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&has_geo=1&tags=${query}&per_page=24&format=json&extras=geo&nojsoncallback=1`,
       )
       .then((response) => {
         setImages(response.data.photos.photo);
@@ -39,9 +42,28 @@ const PhotoContextProvider = (props) => {
       });
   };
 
+  const findImage = ({ id }) => {
+    images && id && setCurrentId(images.filter((img) => img.id == id)[0].id);
+  };
+
+  const getGeo = ({ coords, url }) => {
+    setGeoMarker(coords);
+    setCurrentUrl(url);
+  };
+
   return (
-    <PhotoContext.Provider value={{ images, loading, runSearch }}>
-      {console.log('props.children', props.children)}
+    <PhotoContext.Provider
+      value={{
+        images,
+        loading,
+        currentGeoMarker,
+        currentId,
+        currentUrl,
+        runSearch,
+        getGeo,
+        findImage,
+      }}
+    >
       {props.children}
     </PhotoContext.Provider>
   );
